@@ -38,7 +38,14 @@ export default function TodoCard({
   return (
     <form className='todo-card' onSubmit={handleEdit} key={id}>
       {!isEditing ? (
-        <div className='todo-content'>
+        <div
+          className='todo-content'
+          style={
+            completed
+              ? { textDecoration: 'line-through' }
+              : { textDecoration: 'none' }
+          }
+        >
           <input
             type='checkbox'
             id={`${id}`}
