@@ -1,30 +1,16 @@
-# React + TypeScript + Vite
+#  SIMPLE TODOLIST THAT STORE DATA IN LOCAL STORAGE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+### Installation
+- Clone the project
+- `npm install` to install the depencies
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Premise
+- A simple todolist app with CRUD operation (CREATE, READ, DELETE, UPDATE)
+- Store data in local storage
+- Tab to show whether the todolist is active or completed
+- Tab to display all of the todolist whether if it is active or not
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+<img width="650" alt="Screenshot 2024-01-04 at 2 55 37 pm" src="https://github.com/nhinewyenn/todolist/assets/85110195/94e64d0d-bfff-4c46-9cf4-c7b207e52e6d">
