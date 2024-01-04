@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
-import Header from './components/Header';
 import TodoCard from './components/TodoCard';
 import TodoForm from './components/TodoInput';
 import FilterButton from './components/FilterButton';
@@ -108,7 +107,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <h1>TODOLIST</h1>
       <TodoForm addTodo={addTodos} todoRef={todoRef} />
       {filterList}
       {todoList.length > 0 && (
@@ -116,7 +115,6 @@ function App() {
           {todoList.length} {todosNoun()} remaining
         </h4>
       )}
-
       {todoList}
     </>
   );
