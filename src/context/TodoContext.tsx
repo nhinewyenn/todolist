@@ -29,9 +29,12 @@ export default function TodoContextProvider({
   });
 
   function editTodo(id: string, newValue: string) {
-    const updatedTodos = todos.map((todo) =>
-      todo.id === id ? { ...todo, value: newValue } : todo
-    );
+    const updatedTodos = todos.map((todo) => {
+      if (id === todo.id) {
+        return { ...todo, value: newValue };
+      }
+      return todo;
+    });
     setTodos(updatedTodos);
   }
 
