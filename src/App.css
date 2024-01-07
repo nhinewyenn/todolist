@@ -21,6 +21,7 @@ ul {
   list-style: none;
   margin: 0;
 }
+
 .todo-card {
   background-color: #fff;
   padding: 1.5rem;
@@ -31,6 +32,7 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 }
 
 .todo-card input {
@@ -77,11 +79,18 @@ ul {
   border: none;
 }
 
-.edit {
+.edit,
+.low {
   color: green;
 }
 
-.delete {
+.edit:disabled {
+  color: #666;
+  cursor: not-allowed;
+}
+
+.delete,
+.high {
   color: red;
 }
 
