@@ -19,7 +19,7 @@ function App() {
     try {
       setTodos(JSON.parse(localStorage.getItem('todos') as string));
     } catch (error) {
-      console.error('Error parsing local storage data:', error);
+      throw new Error('Error parsing local storage data:' + error);
     }
   }, [setTodos]);
 
