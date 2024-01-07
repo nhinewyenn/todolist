@@ -2,6 +2,7 @@
 
 #root {
   max-width: 100%;
+  width: 50%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -10,7 +11,7 @@
 .todo-input {
   background: #fff;
   padding: 0.75rem;
-  width: 90%;
+  width: 80%;
   border-radius: 10px;
   margin: 0 auto 1rem auto;
   color: #333;
@@ -27,7 +28,7 @@ ul {
   padding: 1.5rem;
   border-radius: 10px;
   color: #666;
-  width: 90%;
+  width: 80%;
   margin: 1rem auto 1rem auto;
   display: flex;
   justify-content: space-between;
@@ -47,6 +48,7 @@ ul {
 
 .todo-edit {
   position: relative;
+  width: 90%;
 }
 
 .todo-edit-input {
@@ -60,7 +62,7 @@ ul {
   position: absolute;
   border: 0;
   cursor: pointer;
-  right: 5px;
+  right: 20px;
   top: 50%;
   transform: translate(0, -50%);
   color: whitesmoke;
@@ -97,8 +99,35 @@ ul {
 .filter-button {
   background: rgb(89, 88, 88);
   margin-right: 0.5rem;
+  font-size: 14px;
 }
 
 .filter-button:focus {
   background: green;
+}
+
+@media only screen and (max-width: 825px) {
+  .todo-edit {
+    width: 80%;
+  }
+
+  .cancel {
+    right: 12px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .todo-edit {
+    width: 75%;
+  }
+
+  .cancel {
+    right: 10px;
+  }
+}
+
+@media only screen and (max-width: 526px) {
+  .filter-button {
+    font-size: 12px;
+  }
 }
