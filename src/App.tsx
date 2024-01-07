@@ -97,9 +97,9 @@ function App() {
         </h4>
       )}
       <div className='todo-container'>
-        <p className='high'>High priority</p>
+        {todoList.length > 0 && <p className='high'>High priority</p>}
         {todoList}
-        <p className='low'>Low priority</p>
+        {todoList.length > 0 && <p className='low'>Low priority</p>}
       </div>
     </>
   );
