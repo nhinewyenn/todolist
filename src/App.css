@@ -1,11 +1,16 @@
 /** @format */
 
 #root {
-  max-width: 100%;
+  max-width: 50%;
   width: 50%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  overflow-x: hidden important!;
+}
+
+body {
+  overflow-x: hidden important!;
 }
 
 .todo-input {
@@ -75,6 +80,7 @@ ul {
   align-items: center;
   text-align: center;
 }
+
 .todo-card button {
   padding: 0;
   background-color: transparent;
@@ -109,6 +115,10 @@ ul {
 @media only screen and (max-width: 825px) {
   .todo-edit {
     width: 80%;
+  }
+
+  .todo-label {
+    font-size: 12px;
   }
 
   .cancel {

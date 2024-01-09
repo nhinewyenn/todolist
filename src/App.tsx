@@ -27,6 +27,23 @@ function App() {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos, filter]);
 
+  function generateTodoDesc() {
+    const completedTodos = todos.filter((todo) => todo.completed).length;
+    const activeTodos = todos.length - completedTodos;
+
+    function formatTodoCount(count: number, noun: string) {
+      return `${count} ${noun}${count !== 1 ? 's' : ''}`;
+    }
+
+    if (filter === 'Completed') {
+      return formatTodoCount(completedTodos, 'todo completed');
+    } else if (filter === 'All') {
+      return formatTodoCount(todos.length, 'todo');
+    } else {
+      return formatTodoCount(activeTodos, 'todo remaining');
+    }
+  }
+
   function handleSort() {
     const _todoItems = [...todos];
     const draggedItemContent = _todoItems.splice(dragItem.current, 1)[0];
@@ -82,20 +99,12 @@ function App() {
       />
     ));
 
-  function todosNoun() {
-    return todoList.length === 1 ? 'todo' : 'todos';
-  }
-
   return (
     <>
       <h1>TODOLIST</h1>
       <TodoForm addTodo={addTodos} todoRef={todoRef} />
       {filterList}
-      {todoList.length > 0 && (
-        <h4 id='list-heading'>
-          {todoList.length} {todosNoun()} remaining
-        </h4>
-      )}
+      {todoList.length > 0 && <h4 id='list-heading'>{generateTodoDesc()}</h4>}
       <div className='todo-container'>
         {todoList.length > 0 && <p className='high'>High priority</p>}
         {todoList}

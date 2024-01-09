@@ -68,7 +68,9 @@ export default function TodoCard({
             defaultChecked={completed}
             onChange={() => toggleComplete(id)}
           />
-          <label htmlFor={`${id}`}>{value}</label>
+          <label htmlFor={`${id}`} className='todo-label'>
+            {value}
+          </label>
         </div>
       ) : (
         <div className='todo-edit'>
