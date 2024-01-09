@@ -27,7 +27,7 @@ function App() {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos, filter]);
 
-  function generateTodoDesc() {
+  function todoDesc() {
     const completedTodos = todos.filter((todo) => todo.completed).length;
     const activeTodos = todos.length - completedTodos;
 
@@ -108,7 +108,7 @@ function App() {
       <h1>TODOLIST</h1>
       <TodoForm addTodo={addTodos} todoRef={todoRef} />
       {filterList}
-      {todoList.length > 0 && <h4 id='list-heading'>{generateTodoDesc()}</h4>}
+      {todoList.length > 0 && <h4 id='list-heading'>{todoDesc()}</h4>}
       <div className='todo-container'>
         {todoList.length > 0 && <p className='high'>High priority</p>}
         {todoList}
