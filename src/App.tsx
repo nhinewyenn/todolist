@@ -31,16 +31,20 @@ function App() {
     const completedTodos = todos.filter((todo) => todo.completed).length;
     const activeTodos = todos.length - completedTodos;
 
-    function formatTodoCount(count: number, noun: string) {
-      return `${count} ${noun}${count !== 1 ? 's' : ''}`;
+    function formatTodoCount(count: number, singular: string, plural: string) {
+      return `${count} ${count !== 1 ? plural : singular}`;
     }
 
     if (filter === 'Completed') {
-      return formatTodoCount(completedTodos, 'todo completed');
+      return formatTodoCount(
+        completedTodos,
+        'todo completed',
+        'todos completed'
+      );
     } else if (filter === 'All') {
-      return formatTodoCount(todos.length, 'todo');
+      return formatTodoCount(todos.length, 'todo', 'todos');
     } else {
-      return formatTodoCount(activeTodos, 'todo remaining');
+      return formatTodoCount(activeTodos, 'todo remaining', 'todos remaining');
     }
   }
 
