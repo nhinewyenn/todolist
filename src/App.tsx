@@ -91,15 +91,13 @@ function App() {
     .filter(FILTER_MAP[filter as keyof FilterMap])
     .map((todo, index) => (
       <TodoCard
+        {...todo}
         index={index}
-        id={todo.id}
         key={index}
         onDragEnd={handleSort}
         onDragOver={(e) => e.preventDefault()}
         onDragEnter={() => (dragOverItem.current = index)}
         onDragStart={() => (dragItem.current = index)}
-        value={todo.value}
-        completed={todo.completed}
       />
     ));
 
