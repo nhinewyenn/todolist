@@ -79,7 +79,7 @@ export default function TodoCard({
             id={`${id}`}
             ref={editRef}
             className='todo-edit-input'
-            value={value}
+            defaultValue={value}
           />
           <button
             className='cancel'
