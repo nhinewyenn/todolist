@@ -8,7 +8,7 @@ import FilterButton from './components/FilterButton';
 import { FILTER_MAP, FILTER_NAMES, FilterMap, Todos, uid } from './constant';
 import { useTodoContext } from './hooks/useTodoContext';
 
-function App() {
+export default function App() {
   const { todos, setTodos } = useTodoContext();
   const [filter, setFilter] = useState('All');
   const dragItem = useRef<any>(null);
@@ -78,15 +78,6 @@ function App() {
     if (todoRef.current) todoRef.current.value = '';
   }
 
-  const filterList = FILTER_NAMES.map((name) => (
-    <FilterButton
-      name={name}
-      key={name}
-      isPressed={name === filter}
-      setFilter={setFilter}
-    />
-  ));
-
   const todoList = todos
     .filter(FILTER_MAP[filter as keyof FilterMap])
     .map((todo, index) => (
@@ -105,7 +96,16 @@ function App() {
     <>
       <h1>TODOLIST</h1>
       <TodoForm addTodo={addTodos} todoRef={todoRef} />
-      {filterList}
+
+      {FILTER_NAMES.map((name) => (
+        <FilterButton
+          name={name}
+          key={name}
+          isPressed={name === filter}
+          setFilter={setFilter}
+        />
+      ))}
+
       {todoList.length > 0 && <h4 id='list-heading'>{todoDesc()}</h4>}
       <div className='todo-container'>
         {todoList.length > 0 && <p className='high'>High priority</p>}
@@ -115,5 +115,3 @@ function App() {
     </>
   );
 }
-
-export default App;
