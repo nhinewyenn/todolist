@@ -38,7 +38,7 @@ export default function TodoContextProvider({
   }
 
   function deleteTodo(id: string) {
-    const updatedTodos = [...todos].filter((todo) => id !== todo.id);
+    const updatedTodos = todos.filter((todo) => id !== todo.id);
     setTodos(updatedTodos);
   }
 

@@ -11,8 +11,8 @@ import { useTodoContext } from './hooks/useTodoContext';
 export default function App() {
   const { todos, setTodos } = useTodoContext();
   const [filter, setFilter] = useState('All');
-  const dragItem = useRef<any>(null);
-  const dragOverItem = useRef<any>(null);
+  const dragItem = useRef<any | null>(null);
+  const dragOverItem = useRef<any | null>(null);
   const todoRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -49,12 +49,14 @@ export default function App() {
   }
 
   function handleSort() {
-    const _todoItems = [...todos];
-    const draggedItemContent = _todoItems.splice(dragItem.current, 1)[0];
-    _todoItems.splice(dragOverItem.current, 0, draggedItemContent);
-    dragItem.current = null;
-    dragOverItem.current = null;
-    setTodos(_todoItems);
+    if (dragItem.current !== null && dragOverItem.current !== null) {
+      const _todoItems = [...todos];
+      const draggedItemContent = _todoItems.splice(dragItem.current, 1)[0];
+      _todoItems.splice(dragOverItem.current, 0, draggedItemContent);
+      dragItem.current = null;
+      dragOverItem.current = null;
+      setTodos(_todoItems);
+    }
   }
 
   function addTodos(e: React.FormEvent) {
