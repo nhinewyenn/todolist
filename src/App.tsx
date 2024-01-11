@@ -19,8 +19,10 @@ export default function App() {
     try {
       const storedTodos = localStorage.getItem('todos');
       if (storedTodos) {
-        const parsedTodos = JSON.parse(storedTodos);
+        const parsedTodos = JSON.parse(storedTodos) as Todos[];
         setTodos(parsedTodos);
+      } else {
+        setTodos([]); // If no stored data, you may want to initialize with an empty array
       }
     } catch (error) {
       throw new Error('Error parsing local storage data:' + error);
