@@ -6,7 +6,11 @@ type FilterButtonProps = {
   setFilter: (name: string) => void;
 };
 
-function FilterButton({ name, isPressed, setFilter }: FilterButtonProps) {
+export default function FilterButton({
+  name,
+  isPressed,
+  setFilter,
+}: FilterButtonProps) {
   return (
     <button
       type='button'
@@ -19,5 +23,3 @@ function FilterButton({ name, isPressed, setFilter }: FilterButtonProps) {
     </button>
   );
 }
-
-export default FilterButton;

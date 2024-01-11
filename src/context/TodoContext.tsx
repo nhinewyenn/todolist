@@ -3,7 +3,6 @@
 import React, { createContext, ReactNode, useState } from 'react';
 import { Todos } from '../constant';
 
-// Define the type for the context value
 type TodoContextValue = {
   todos: Todos[];
   setTodos: React.Dispatch<React.SetStateAction<Todos[]>>;
