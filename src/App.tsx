@@ -17,17 +17,18 @@ export default function App() {
 
   useEffect(() => {
     try {
-      const parsedTodos = JSON.parse(
-        localStorage.getItem('todos') as string
-      ) as Todos[];
-      setTodos(parsedTodos);
+      const storedTodos = localStorage.getItem('todos');
+      if (storedTodos) {
+        const parsedTodos = JSON.parse(storedTodos);
+        setTodos(parsedTodos);
+      }
     } catch (error) {
       throw new Error('Error parsing local storage data:' + error);
     }
   }, [setTodos]);
 
   useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos as Todos[]));
+    localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos, filter]);
 
   function todoDesc() {
