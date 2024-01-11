@@ -11,20 +11,23 @@ import { useTodoContext } from './hooks/useTodoContext';
 export default function App() {
   const { todos, setTodos } = useTodoContext();
   const [filter, setFilter] = useState('All');
-  const dragItem = useRef<any | null>(null);
-  const dragOverItem = useRef<any | null>(null);
+  const dragItem = useRef<number | null>(null);
+  const dragOverItem = useRef<number | null>(null);
   const todoRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     try {
-      setTodos(JSON.parse(localStorage.getItem('todos') as string));
+      const parsedTodos = JSON.parse(
+        localStorage.getItem('todos') as string
+      ) as Todos[];
+      setTodos(parsedTodos);
     } catch (error) {
       throw new Error('Error parsing local storage data:' + error);
     }
   }, [setTodos]);
 
   useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
+    localStorage.setItem('todos', JSON.stringify(todos as Todos[]));
   }, [todos, filter]);
 
   function todoDesc() {
@@ -82,7 +85,7 @@ export default function App() {
 
   const todoList = todos
     .filter(FILTER_MAP[filter as keyof FilterMap])
-    .map((todo, index) => (
+    .map((todo, index: number) => (
       <TodoCard
         {...todo}
         index={index}

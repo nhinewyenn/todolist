@@ -15,16 +15,14 @@ type TodoContextProviderProps = {
   children: ReactNode;
 };
 
-export const TodoContext = createContext<TodoContextValue | undefined>(
-  undefined
-);
+export const TodoContext = createContext<TodoContextValue | null>(null);
+
 export default function TodoContextProvider({
   children,
 }: TodoContextProviderProps) {
   const [todos, setTodos] = useState<Todos[]>(() => {
-    return localStorage.getItem('todos')
-      ? JSON.parse(localStorage.getItem('todos') as string)
-      : [];
+    const storedTodos = localStorage.getItem('todos');
+    return storedTodos ? (JSON.parse(storedTodos) as Todos[]) : [];
   });
 
   function editTodo(id: string, newValue: string) {
@@ -38,26 +36,27 @@ export default function TodoContextProvider({
   }
 
   function deleteTodo(id: string) {
-    const updatedTodos = todos.filter((todo) => id !== todo.id);
+    const updatedTodos = [...todos].filter((todo) => id !== todo.id);
     setTodos(updatedTodos);
   }
 
   function toggleComplete(id: string) {
-    const updatedTodos = todos.map((todo) => {
-      if (id === todo.id) {
-        return { ...todo, completed: !todo.completed };
-      }
-      return todo;
-    });
-    setTodos(updatedTodos);
+    const todoToUpdate = todos.find((todo) => id === todo.id);
+    if (todoToUpdate) {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        )
+      );
+    }
   }
 
   const contextValue: TodoContextValue = {
     todos,
     setTodos,
+    editTodo,
     deleteTodo,
     toggleComplete,
-    editTodo,
   };
 
   return (
