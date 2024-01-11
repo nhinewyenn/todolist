@@ -22,7 +22,7 @@ export default function App() {
         const parsedTodos = JSON.parse(storedTodos) as Todos[];
         setTodos(parsedTodos);
       } else {
-        setTodos([]); // If no stored data, you may want to initialize with an empty array
+        setTodos([]); // If no stored data, initialize with an empty array
       }
     } catch (error) {
       throw new Error('Error parsing local storage data:' + error);
