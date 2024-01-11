@@ -41,8 +41,8 @@ export default function TodoContextProvider({
   }
 
   function toggleComplete(id: string) {
-    const todoToUpdate = todos.find((todo) => id === todo.id);
-    if (todoToUpdate) {
+    const toggleTodo = todos.find((todo) => id === todo.id);
+    if (toggleTodo) {
       setTodos(
         todos.map((todo) =>
           todo.id === id ? { ...todo, completed: !todo.completed } : todo
